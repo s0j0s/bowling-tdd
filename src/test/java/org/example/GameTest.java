@@ -37,4 +37,17 @@ class GameTest {
         }
         assertEquals(16, game.score());
     }
+
+    @Test
+    @org.junit.jupiter.api.DisplayName("스트라이크 후 다음 두 투구 점수가 보너스로 더해진다")
+    void oneStrike() {
+        Game game = new Game();
+        game.roll(10); // strike
+        game.roll(3);
+        game.roll(4); // bonus
+        for (int i = 0; i < 16; i++) {
+            game.roll(0);
+        }
+        assertEquals(24, game.score());
+    }
 }
