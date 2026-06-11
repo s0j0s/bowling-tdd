@@ -24,4 +24,17 @@ class GameTest {
         }
         assertEquals(20, game.score());
     }
+
+    @Test
+    @org.junit.jupiter.api.DisplayName("스페어 후 다음 투구 점수가 보너스로 더해진다")
+    void oneSpare() {
+        Game game = new Game();
+        game.roll(5);
+        game.roll(5); // spare
+        game.roll(3); // bonus
+        for (int i = 0; i < 17; i++) {
+            game.roll(0);
+        }
+        assertEquals(16, game.score());
+    }
 }
